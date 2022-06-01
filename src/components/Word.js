@@ -6,11 +6,11 @@ import { Row, Col, Accordion, Alert } from "react-bootstrap";
 export const Word = ({ word, speak, handleReset, handleNext, voice }) => {
   const colors = ["danger", "dark", "info", "warning", "primary", "success"];
   const langDesc =
-    word.language.search("en-") >= 0
+    word.language.search("en") >= 0
       ? "Inglés"
-      : word.language.search("es-") >= 0
+      : word.language.search("es") >= 0
       ? "Español"
-      : word.language.search("it-") >= 0
+      : word.language.search("it") >= 0
       ? "Italiano"
       : "Francés";
 
