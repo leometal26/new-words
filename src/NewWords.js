@@ -1,11 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import { Menu } from "./components/Menu";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { CheckWords } from "./screens/CheckWords";
 import { AddWord } from "./screens/AddWord";
 import { AddUser } from "./screens/AddUser";
@@ -39,7 +34,7 @@ export const NewWords = () => {
             <Route exact path="users" element={<SelectUser />} />
             <Route exact path="newUser" element={<AddUser />} />
             <Route exact path="newWord" element={<AddWord />} />
-            <Route path="" element={<Navigate to="/words" />} />
+            <Route path="*" element={<CheckWords />} />
           </Routes>
         </Router>
       </WordContext.Provider>

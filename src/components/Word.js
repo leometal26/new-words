@@ -5,18 +5,32 @@ import { Row, Col, Accordion, Alert } from "react-bootstrap";
 
 export const Word = ({ word, speak, handleReset, handleNext, voice }) => {
   const colors = ["danger", "dark", "info", "warning", "primary", "success"];
+  const langDesc =
+    word.language.search("en-") >= 0
+      ? "Inglés"
+      : word.language.search("es-") >= 0
+      ? "Español"
+      : word.language.search("it-") >= 0
+      ? "Italiano"
+      : "Francés";
 
   return (
     <Card bg="dark" className="text-center">
       <Card.Header>
-        <Alert variant={colors[word.step - 1]}>Fase {word.step}</Alert>
+        <Alert variant={colors[word.step - 1]}>
+          Fase {word.step} : {langDesc}
+        </Alert>
       </Card.Header>
       <Card.Body>
         <Card.Title>
           <Accordion>
             <Accordion.Item eventKey="0">
-              <Accordion.Header>{word.word}</Accordion.Header>
-              <Accordion.Body>{word.meaning}</Accordion.Body>
+              <Accordion.Header>
+                {word.step % 2 === 0 ? word.meaning : word.word}
+              </Accordion.Header>
+              <Accordion.Body>
+                {word.step % 2 === 0 ? word.word : word.meaning}
+              </Accordion.Body>
             </Accordion.Item>
           </Accordion>
         </Card.Title>
